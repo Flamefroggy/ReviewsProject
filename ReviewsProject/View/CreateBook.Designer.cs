@@ -1,6 +1,6 @@
 ﻿namespace ReviewsProject.View
 {
-    partial class CreateGame
+    partial class CreateBook
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(338, 40);
             this.labelDescription.TabIndex = 1;
-            this.labelDescription.Text = "Описание игры:";
+            this.labelDescription.Text = "Описание книги:";
             this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelTitle
@@ -86,7 +86,7 @@
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(338, 40);
             this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "Название игры:";
+            this.labelTitle.Text = "Название книги:";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbDescription
@@ -134,14 +134,14 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // CreateGame
+            // CreateBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 424);
             this.Controls.Add(this.layoutMain);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "CreateGame";
+            this.Name = "CreateBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавление игры";
             this.layoutMain.ResumeLayout(false);
