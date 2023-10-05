@@ -12,16 +12,16 @@ namespace ReviewsProject.View
             InitializeComponent();
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonCreateBook_Click(object sender, EventArgs e)
         {
             Book.Title = tbTitle.Text;
             Book.Description = tbDescription.Text;
             BookCreated?.Invoke(Book);
-            this.Close();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
             this.Close();
         }
     }

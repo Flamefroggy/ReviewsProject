@@ -12,16 +12,16 @@ namespace ReviewsProject.View
             InitializeComponent();
         }
 
-        private void buttonCreate_Click(object sender, EventArgs e)
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonCreateGame_Click(object sender, EventArgs e)
         {
             Game.Title = tbTitle.Text;
             Game.Description = tbDescription.Text;
             GameCreated?.Invoke(Game);
-            this.Close();
-        }
-
-        private void buttonCancel_Click(object sender, EventArgs e)
-        {
             this.Close();
         }
     }

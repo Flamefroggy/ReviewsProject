@@ -120,7 +120,7 @@
             this.buttonCreate.TabIndex = 3;
             this.buttonCreate.Text = "Создать";
             this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreate_Click);
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreateBook_Click);
             // 
             // buttonCancel
             // 
@@ -143,7 +143,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "CreateBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Добавление игры";
+            this.Text = "Добавление книги";
             this.layoutMain.ResumeLayout(false);
             this.layoutMain.PerformLayout();
             this.ResumeLayout(false);

@@ -7,6 +7,7 @@ namespace ReviewsProject
     {
         List<Game> Games = new List<Game>();
         List<Book> Books = new List<Book>();
+        List<Film> Films = new List<Film>();
 
         public MainForm()
         {
@@ -60,8 +61,33 @@ namespace ReviewsProject
             Books.Add(book2);
             Books.Add(book3);
 
+            var film1 = new Film
+            {
+                Id = 1,
+                Title = "Форрест Гамп",
+                Description = "плак"
+            };
+            var film2 = new Film
+            {
+                Id = 2,
+                Title = "Терминатор",
+                Description = "Та-Дан Тан Та-Дан"
+            };
+            var film3 = new Film
+            {
+                Id = 3,
+                Title = "Snatch",
+                Description = "спиздили"
+            };
+
+            Films.Add(film1);
+            Films.Add(film2);
+            Films.Add(film3);
+
             BooksBS.DataSource = Books;
             GamesBS.DataSource = Games;
+            FilmsBS.DataSource = Films;
+
             comboBoxTableType.SelectedIndex = 0;
         }
 
@@ -77,6 +103,14 @@ namespace ReviewsProject
             createForm.BookCreated += addBook;
             createForm.ShowDialog();
         }
+
+        private void menuItemCreateFilm_Click(object sender, EventArgs e)
+        {
+            var createForm = new CreateFilm();
+            createForm.FilmCreated += addFilm;
+            createForm.ShowDialog();
+        }
+
         private void addGame(Game game)
         {
             Games.Add(game);
@@ -88,23 +122,28 @@ namespace ReviewsProject
             Books.Add(book);
             BooksBS.ResetBindings(false);
         }
+        private void addFilm(Film film)
+        {
+            Films.Add(film);
+            FilmsBS.ResetBindings(false);
+        }
 
         private void comboBoxTableType_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch (comboBoxTableType.SelectedIndex)
             {
                 case 0:
-                    dgvMain.DataSource = GamesBS; 
+                    dgvMain.DataSource = GamesBS;
                     break;
                 case 1:
                     dgvMain.DataSource = BooksBS;
                     break;
+                case 2:
+                    dgvMain.DataSource = FilmsBS;
+                    break;
             }
         }
 
-        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
     }
+
 }

@@ -16,6 +16,9 @@
     <Compile Update="View\CreateBook.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="View\CreateFilm.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

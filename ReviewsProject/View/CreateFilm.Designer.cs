@@ -1,6 +1,6 @@
 ﻿namespace ReviewsProject.View
 {
-    partial class CreateGame
+    partial class CreateFilm
     {
         /// <summary>
         /// Required designer variable.
@@ -74,7 +74,7 @@
             this.labelDescription.Name = "labelDescription";
             this.labelDescription.Size = new System.Drawing.Size(338, 40);
             this.labelDescription.TabIndex = 1;
-            this.labelDescription.Text = "Описание игры:";
+            this.labelDescription.Text = "Описание фильма:";
             this.labelDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelTitle
@@ -86,7 +86,7 @@
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(338, 40);
             this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "Название игры:";
+            this.labelTitle.Text = "Название фильма:";
             this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tbDescription
@@ -120,7 +120,7 @@
             this.buttonCreate.TabIndex = 3;
             this.buttonCreate.Text = "Создать";
             this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += new System.EventHandler(this.buttonCreateGame_Click);
+            this.buttonCreate.Click += new System.EventHandler(this.buttonCreateFilm_Click);
             // 
             // buttonCancel
             // 
@@ -134,16 +134,16 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // CreateGame
+            // CreateFilm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(391, 424);
             this.Controls.Add(this.layoutMain);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "CreateGame";
+            this.Name = "CreateFilm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Добавление игры";
+            this.Text = "Добавление фильма";
             this.layoutMain.ResumeLayout(false);
             this.layoutMain.PerformLayout();
             this.ResumeLayout(false);

@@ -42,11 +42,13 @@
             this.menuItemCreateFilm = new System.Windows.Forms.ToolStripMenuItem();
             this.comboBoxTableType = new System.Windows.Forms.ComboBox();
             this.BooksBS = new System.Windows.Forms.BindingSource(this.components);
+            this.FilmsBS = new System.Windows.Forms.BindingSource(this.components);
             this.layoutMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GamesBS)).BeginInit();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FilmsBS)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutMain
@@ -157,6 +159,7 @@
             this.menuItemCreateFilm.Name = "menuItemCreateFilm";
             this.menuItemCreateFilm.Size = new System.Drawing.Size(139, 26);
             this.menuItemCreateFilm.Text = "Фильм";
+            this.menuItemCreateFilm.Click += new System.EventHandler(this.menuItemCreateFilm_Click);
             // 
             // comboBoxTableType
             // 
@@ -177,7 +180,6 @@
             // BooksBS
             // 
             this.BooksBS.DataSource = typeof(ReviewsData.Model.Book);
-            this.BooksBS.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
             // 
             // MainForm
             // 
@@ -196,6 +198,7 @@
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.FilmsBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,5 +218,6 @@
         private ToolStripMenuItem menuItemCreateBook;
         private ToolStripMenuItem menuItemCreateFilm;
         private BindingSource BooksBS;
+        private BindingSource FilmsBS;
     }
 }
