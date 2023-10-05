@@ -1,10 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ReviewsData;
 using ReviewsData.Model;
+using ReviewsData.Service.Games;
 using ReviewsProject.View;
+using System.Runtime.CompilerServices;
 
 namespace ReviewsProject
 {
     public partial class MainForm : Form
     {
+        private IGamesManager _gamesManager;
         List<Game> Games = new List<Game>();
         List<Book> Books = new List<Book>();
         List<Film> Films = new List<Film>();
@@ -16,73 +22,12 @@ namespace ReviewsProject
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var game1 = new Game
+            if(!DesignMode)
             {
-                Id = 1,
-                Title = "Танки онлайн",
-                Description = "3123"
-            };
-            var game2 = new Game
-            {
-                Id = 2,
-                Title = "Дота 2",
-                Description = "22"
-            };
-            var game3 = new Game
-            {
-                Id = 3,
-                Title = "КС",
-                Description = "11"
-            };
-            Games.Add(game1);
-            Games.Add(game2);
-            Games.Add(game3);
+                _gamesManager = Program.ServiceProvider.GetService<IGamesManager>();
+            }
 
-            var book1 = new Book
-            {
-                Id = 1,
-                Title = "Мойдодыр",
-                Description = "хохол"
-            };
-            var book2 = new Book
-            {
-                Id = 2,
-                Title = "Азбука",
-                Description = "АБВГД"
-            };
-            var book3 = new Book
-            {
-                Id = 3,
-                Title = "Дихотомия добра и зла",
-                Description = "rip"
-            };
-
-            Books.Add(book1);
-            Books.Add(book2);
-            Books.Add(book3);
-
-            var film1 = new Film
-            {
-                Id = 1,
-                Title = "Форрест Гамп",
-                Description = "плак"
-            };
-            var film2 = new Film
-            {
-                Id = 2,
-                Title = "Терминатор",
-                Description = "Та-Дан Тан Та-Дан"
-            };
-            var film3 = new Film
-            {
-                Id = 3,
-                Title = "Snatch",
-                Description = "спиздили"
-            };
-
-            Films.Add(film1);
-            Films.Add(film2);
-            Films.Add(film3);
+            Games = _gamesManager.Get();
 
             BooksBS.DataSource = Books;
             GamesBS.DataSource = Games;
