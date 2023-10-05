@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace ReviewsData.Model
 {
-    public class Book
+    public class Book : BaseEntity
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
         public int NPages { get; set; } 
     }
 }

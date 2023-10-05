@@ -30,7 +30,7 @@ namespace ReviewsProject
             var services = new ServiceCollection();
 
             services.AddSingleton(configuration);
-            services.AddScoped<IGamesManager, GamesManager>();
+            services.AddSingleton<IGamesManager, GamesManager>();
 
             var optionsBuilder = new DbContextOptionsBuilder<ReviewsDbContext>();
             optionsBuilder.UseNpgsql(configuration["ConnectionStrings:Npgsql"]);
