@@ -8,19 +8,19 @@ using System.Threading.Tasks;
 
 namespace ReviewsData.Service.Games
 {
-    public class GamesManager : IGamesManager
+    public class FilmsManager : IFilmsManager
     {
         private IDbContextFactory<ReviewsDbContext> _contextFactory;
-        public GamesManager(IDbContextFactory<ReviewsDbContext> contextFactory)
+        public FilmsManager(IDbContextFactory<ReviewsDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
         }
-        public List<Game> Get()
+        public List<Film> Get()
         {
             using var db = _contextFactory.CreateDbContext();
             try
             {
-                return db.Games.ToList();
+                return db.Films.ToList();
             }
             catch (Exception ex)
             {

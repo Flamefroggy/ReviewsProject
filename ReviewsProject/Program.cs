@@ -14,8 +14,6 @@ namespace ReviewsProject
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             ConfigureServices();
             Application.Run(new MainForm());
@@ -31,6 +29,8 @@ namespace ReviewsProject
 
             services.AddSingleton(configuration);
             services.AddSingleton<IGamesManager, GamesManager>();
+            services.AddSingleton<IBooksManager, BooksManager>();
+            services.AddSingleton<IFilmsManager, FilmsManager>();
 
             var optionsBuilder = new DbContextOptionsBuilder<ReviewsDbContext>();
             optionsBuilder.UseNpgsql(configuration["ConnectionStrings:Npgsql"]);

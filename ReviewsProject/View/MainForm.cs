@@ -4,13 +4,14 @@ using ReviewsData;
 using ReviewsData.Model;
 using ReviewsData.Service.Games;
 using ReviewsProject.View;
-using System.Runtime.CompilerServices;
 
 namespace ReviewsProject
 {
     public partial class MainForm : Form
     {
         private IGamesManager _gamesManager;
+        private IBooksManager _booksManager;
+        private IFilmsManager _filmsManager;
         List<Game> Games = new List<Game>();
         List<Book> Books = new List<Book>();
         List<Film> Films = new List<Film>();
@@ -25,9 +26,13 @@ namespace ReviewsProject
             if(!DesignMode)
             {
                 _gamesManager = Program.ServiceProvider.GetService<IGamesManager>();
+                _booksManager = Program.ServiceProvider.GetService<IBooksManager>();
+                _filmsManager = Program.ServiceProvider.GetService<IFilmsManager>();
             }
 
             Games = _gamesManager.Get();
+            Books = _booksManager.Get();
+            Films = _filmsManager.Get();
 
             BooksBS.DataSource = Books;
             GamesBS.DataSource = Games;
