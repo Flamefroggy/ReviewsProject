@@ -29,9 +29,9 @@ namespace ReviewsData
             builder.Entity<Book>()
                 .HasData(new Book[]
             {
-                new Book { Id = 1, Title = "Мойдодыр", Description = "хохол", NPages = 40 },
-                new Book { Id = 2, Title = "Азбука", Description = "АБВГД", NPages = 35 },
-                new Book { Id = 3, Title = "Дихотомия добра и зла", Description = "rip", NPages = 565 }
+                new Book { Id = 1, Title = "Мойдодыр", Description = "хохол", NPages = 40, Rating = 7 },
+                new Book { Id = 2, Title = "Азбука", Description = "АБВГД", NPages = 35, Rating = 5 },
+                new Book { Id = 3, Title = "Дихотомия добра и зла", Description = "Аннотация – краткое описание книги, которое дает читателю представление о произведении, рассказывает завязку сюжета или обозначает общую тему книги. Обычно аннотация публикуется на обороте книги.", NPages = 565, Rating = 2 }
             });
 
             builder.Entity<Game>()
@@ -39,9 +39,9 @@ namespace ReviewsData
             builder.Entity<Game>()
                 .HasData(new Game[]
             {
-                new Game { Id = 1, Title = "Дота 2", Description = "Клац клац" },
-                new Game { Id = 2, Title = "Танки", Description = "Есть пробитие" },
-                new Game { Id = 3, Title = "КС", Description = "AWP" }
+                new Game { Id = 1, Title = "Дота 2", Description = "Клац клац", Rating = 8 },
+                new Game { Id = 2, Title = "Танки", Description = "Есть пробитие", Rating = 5 },
+                new Game { Id = 3, Title = "КС", Description = "AWP", Rating = 6 }
             });
 
             builder.Entity<Film>()
@@ -49,9 +49,9 @@ namespace ReviewsData
             builder.Entity<Film>()
                 .HasData(new Film[]
                 {
-                    new Film { Id = 1, Title = "Побег из Шоушенка", Description = "Dufresne" },
-                    new Film { Id = 2, Title = "Untouchebles", Description = "1+1"},
-                    new Film { Id = 3, Title = "Форрест Гамп", Description = "ты задержан или просто глупый?"}
+                    new Film { Id = 1, Title = "Побег из Шоушенка", Description = "Dufresne", Rating = 9.5 },
+                    new Film { Id = 2, Title = "Untouchebles", Description = "1+1", Rating = 9.1},
+                    new Film { Id = 3, Title = "Форрест Гамп", Description = "ты задержан или просто глупый?", Rating = 9.4}
                 });
 
             base.OnModelCreating(builder);

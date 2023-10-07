@@ -33,8 +33,10 @@
             this.labelTitle = new System.Windows.Forms.Label();
             this.tbDescription = new System.Windows.Forms.TextBox();
             this.tbTitle = new System.Windows.Forms.TextBox();
-            this.buttonCreate = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonCreate = new System.Windows.Forms.Button();
+            this.labelRating = new System.Windows.Forms.Label();
+            this.tbRating = new System.Windows.Forms.TextBox();
             this.layoutMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,19 +51,25 @@
             this.layoutMain.Controls.Add(this.labelTitle, 1, 1);
             this.layoutMain.Controls.Add(this.tbDescription, 1, 4);
             this.layoutMain.Controls.Add(this.tbTitle, 1, 2);
-            this.layoutMain.Controls.Add(this.buttonCreate, 1, 5);
-            this.layoutMain.Controls.Add(this.buttonCancel, 2, 5);
+            this.layoutMain.Controls.Add(this.buttonCreate, 1, 8);
+            this.layoutMain.Controls.Add(this.buttonCancel, 2, 8);
+            this.layoutMain.Controls.Add(this.labelRating, 2, 5);
+            this.layoutMain.Controls.Add(this.tbRating, 2, 6);
             this.layoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutMain.Location = new System.Drawing.Point(0, 0);
             this.layoutMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.layoutMain.Name = "layoutMain";
-            this.layoutMain.RowCount = 6;
+            this.layoutMain.RowCount = 9;
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 27F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 15F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.layoutMain.Size = new System.Drawing.Size(391, 424);
             this.layoutMain.TabIndex = 0;
             // 
@@ -97,7 +105,7 @@
             this.tbDescription.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
-            this.tbDescription.Size = new System.Drawing.Size(338, 216);
+            this.tbDescription.Size = new System.Drawing.Size(338, 121);
             this.tbDescription.TabIndex = 2;
             // 
             // tbTitle
@@ -109,6 +117,18 @@
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(338, 27);
             this.tbTitle.TabIndex = 1;
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonCancel.Location = new System.Drawing.Point(198, 375);
+            this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(166, 45);
+            this.buttonCancel.TabIndex = 4;
+            this.buttonCancel.Text = "Отмена";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonCreate
             // 
@@ -122,17 +142,23 @@
             this.buttonCreate.UseVisualStyleBackColor = true;
             this.buttonCreate.Click += new System.EventHandler(this.buttonCreateGame_Click);
             // 
-            // buttonCancel
+            // labelRating
             // 
-            this.buttonCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonCancel.Location = new System.Drawing.Point(198, 375);
-            this.buttonCancel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(166, 45);
-            this.buttonCancel.TabIndex = 4;
-            this.buttonCancel.Text = "Отмена";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            this.labelRating.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelRating.AutoSize = true;
+            this.labelRating.Location = new System.Drawing.Point(198, 296);
+            this.labelRating.Name = "labelRating";
+            this.labelRating.Size = new System.Drawing.Size(166, 20);
+            this.labelRating.TabIndex = 7;
+            this.labelRating.Text = "Рейтинг:";
+            // 
+            // tbRating
+            // 
+            this.tbRating.Location = new System.Drawing.Point(198, 319);
+            this.tbRating.Name = "tbRating";
+            this.tbRating.Size = new System.Drawing.Size(166, 27);
+            this.tbRating.TabIndex = 9;
             // 
             // CreateGame
             // 
@@ -159,5 +185,7 @@
         private TextBox tbTitle;
         private Button buttonCreate;
         private Button buttonCancel;
+        private Label labelRating;
+        private TextBox tbRating;
     }
 }

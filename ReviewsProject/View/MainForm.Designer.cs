@@ -34,6 +34,7 @@
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ratingtitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GamesBS = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.menuItemCreate = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,23 +68,31 @@
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.layoutMain.Size = new System.Drawing.Size(813, 791);
             this.layoutMain.TabIndex = 0;
             // 
             // dgvMain
             // 
+            this.dgvMain.AllowUserToDeleteRows = false;
+            this.dgvMain.AllowUserToResizeColumns = false;
+            this.dgvMain.AllowUserToResizeRows = false;
             this.dgvMain.AutoGenerateColumns = false;
-            this.dgvMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMain.ColumnHeadersHeight = 29;
             this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.titleDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
+            this.descriptionDataGridViewTextBoxColumn,
+            this.ratingtitleDataGridViewTextBoxColumn});
             this.layoutMain.SetColumnSpan(this.dgvMain, 2);
             this.dgvMain.DataSource = this.GamesBS;
             this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMain.Location = new System.Drawing.Point(3, 84);
             this.dgvMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvMain.Name = "dgvMain";
+            this.dgvMain.ReadOnly = true;
+            this.dgvMain.RowHeadersVisible = false;
             this.dgvMain.RowHeadersWidth = 51;
             this.dgvMain.RowTemplate.Height = 25;
             this.dgvMain.Size = new System.Drawing.Size(807, 703);
@@ -91,27 +100,54 @@
             // 
             // idDataGridViewTextBoxColumn
             // 
+            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.DividerWidth = 2;
+            this.idDataGridViewTextBoxColumn.FillWeight = 25F;
+            this.idDataGridViewTextBoxColumn.Frozen = true;
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.idDataGridViewTextBoxColumn.MinimumWidth = 50;
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 125;
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Width = 50;
             // 
             // titleDataGridViewTextBoxColumn
             // 
+            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Title";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.titleDataGridViewTextBoxColumn.DividerWidth = 2;
+            this.titleDataGridViewTextBoxColumn.FillWeight = 119.0731F;
+            this.titleDataGridViewTextBoxColumn.Frozen = true;
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.titleDataGridViewTextBoxColumn.MinimumWidth = 75;
             this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.Width = 125;
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            this.titleDataGridViewTextBoxColumn.Width = 335;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
+            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.descriptionDataGridViewTextBoxColumn.DividerWidth = 2;
+            this.descriptionDataGridViewTextBoxColumn.FillWeight = 119.0731F;
+            this.descriptionDataGridViewTextBoxColumn.Frozen = true;
+            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Описание";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 75;
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.Width = 125;
+            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.descriptionDataGridViewTextBoxColumn.Width = 335;
+            // 
+            // ratingtitleDataGridViewTextBoxColumn
+            // 
+            this.ratingtitleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ratingtitleDataGridViewTextBoxColumn.DataPropertyName = "Rating";
+            this.ratingtitleDataGridViewTextBoxColumn.DividerWidth = 2;
+            this.ratingtitleDataGridViewTextBoxColumn.FillWeight = 30F;
+            this.ratingtitleDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
+            this.ratingtitleDataGridViewTextBoxColumn.MaxInputLength = 2;
+            this.ratingtitleDataGridViewTextBoxColumn.MinimumWidth = 70;
+            this.ratingtitleDataGridViewTextBoxColumn.Name = "ratingtitleDataGridViewTextBoxColumn";
+            this.ratingtitleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // GamesBS
             // 
@@ -181,6 +217,10 @@
             // 
             this.BooksBS.DataSource = typeof(ReviewsData.Model.Book);
             // 
+            // FilmsBS
+            // 
+            this.FilmsBS.DataSource = typeof(ReviewsData.Model.Film);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -211,13 +251,14 @@
         private ToolStripMenuItem menuItemCreate;
         private ToolStripMenuItem menuItemCreateGame;
         private BindingSource GamesBS;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private ComboBox comboBoxTableType;
         private ToolStripMenuItem menuItemCreateBook;
         private ToolStripMenuItem menuItemCreateFilm;
         private BindingSource BooksBS;
         private BindingSource FilmsBS;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ratingtitleDataGridViewTextBoxColumn;
     }
 }
