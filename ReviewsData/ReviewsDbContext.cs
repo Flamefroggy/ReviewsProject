@@ -9,7 +9,8 @@ namespace ReviewsData
         {
             try
             {
-                Database.CanConnect();
+                Database.OpenConnection();
+                Database.CloseConnection();
             }
             catch (Exception ex)
             {
