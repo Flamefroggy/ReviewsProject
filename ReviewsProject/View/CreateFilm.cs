@@ -21,7 +21,7 @@ namespace ReviewsProject.View
         {
             Film.Title = tbTitle.Text;
             Film.Description = tbDescription.Text;
-            Film.Rating = Convert.ToDouble(tbRating);
+            Film.Rating = 0;
             FilmCreated?.Invoke(Film);
             this.Close();
         }

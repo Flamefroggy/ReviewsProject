@@ -9,8 +9,8 @@ namespace ReviewsData
         {
             try
             {
-                Database.OpenConnection();
-                Database.CloseConnection();
+                //Database.OpenConnection();
+                //Database.CloseConnection();
             }
             catch (Exception ex)
             {
@@ -49,9 +49,9 @@ namespace ReviewsData
             builder.Entity<Film>()
                 .HasData(new Film[]
                 {
-                    new Film { Id = 1, Title = "Побег из Шоушенка", Description = "Dufresne", Rating = 9.5 },
-                    new Film { Id = 2, Title = "Untouchebles", Description = "1+1", Rating = 9.1},
-                    new Film { Id = 3, Title = "Форрест Гамп", Description = "ты задержан или просто глупый?", Rating = 9.4}
+                    new Film { Id = 1, Title = "Побег из Шоушенка", Description = "Dufresne", Rating = 9.5M },
+                    new Film { Id = 2, Title = "Untouchebles", Description = "1+1", Rating = 9.1M},
+                    new Film { Id = 3, Title = "Форрест Гамп", Description = "ты задержан или просто глупый?", Rating = 9.4M}
                 });
 
             base.OnModelCreating(builder);

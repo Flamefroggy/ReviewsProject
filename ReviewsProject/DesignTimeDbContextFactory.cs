@@ -17,7 +17,6 @@ namespace ReviewsProject
             var configurationBuilder = new ConfigurationBuilder().AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
             IConfiguration configuration = configurationBuilder.Build();
 
-
             var optionsBuilder = new DbContextOptionsBuilder<ReviewsDbContext>();
             optionsBuilder.UseNpgsql(configuration["ConnectionStrings:Npgsql"]);
 

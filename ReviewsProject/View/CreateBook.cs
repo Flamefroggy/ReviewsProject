@@ -22,7 +22,7 @@ namespace ReviewsProject.View
             Book.Title = tbTitle.Text;
             Book.Description = tbDescription.Text;
             Book.NPages = Convert.ToInt32(tbNpages);
-            Book.Rating = Convert.ToDouble(tbRating);
+            Book.Rating = 0;
             BookCreated?.Invoke(Book);
             this.Close();
         }

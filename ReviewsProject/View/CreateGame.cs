@@ -21,7 +21,7 @@ namespace ReviewsProject.View
         {
             Game.Title = tbTitle.Text;
             Game.Description = tbDescription.Text;
-            Game.Rating = Convert.ToDouble(tbRating);
+            Game.Rating = 0;
             GameCreated?.Invoke(Game);
             this.Close();
         }
