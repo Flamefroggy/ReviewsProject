@@ -9,21 +9,13 @@ namespace ReviewsData
         {
             try
             {
-                if (Database.GetPendingMigrations().Any())
-                {
-                    Database.Migrate();
-                }
+                Database.CanConnect();
             }
             catch (Exception ex)
             {
                 throw new Exception("Не удалось подключиться к базе данных.", ex.InnerException);
             }
         }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder builder)
-        //{
-        //    builder.UseNpgsql("Host=localhost;Port=5432;Username=postgres;Password=12345678;Database=ReviewsProject;Include Error Detail=true");
-        //}
 
         public DbSet<Book> Books { get; set; }
         public DbSet<Film> Films { get; set; }
