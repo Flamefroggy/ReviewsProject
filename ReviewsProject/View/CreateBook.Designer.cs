@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.layoutMain = new System.Windows.Forms.TableLayoutPanel();
             this.labelDescription = new System.Windows.Forms.Label();
             this.labelTitle = new System.Windows.Forms.Label();
@@ -39,7 +40,9 @@
             this.labelRating = new System.Windows.Forms.Label();
             this.tbNpages = new System.Windows.Forms.TextBox();
             this.tbRating = new System.Windows.Forms.TextBox();
+            this.bookBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.layoutMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutMain
@@ -187,6 +190,10 @@
             this.tbRating.Size = new System.Drawing.Size(166, 27);
             this.tbRating.TabIndex = 8;
             // 
+            // bookBindingSource
+            // 
+            this.bookBindingSource.DataSource = typeof(ReviewsData.Model.Book);
+            // 
             // CreateBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -199,6 +206,7 @@
             this.Text = "Добавление книги";
             this.layoutMain.ResumeLayout(false);
             this.layoutMain.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bookBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +224,6 @@
         private Label labelRating;
         private TextBox tbNpages;
         private TextBox tbRating;
+        private BindingSource bookBindingSource;
     }
 }

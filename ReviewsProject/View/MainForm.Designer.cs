@@ -29,173 +29,32 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.layoutMain = new System.Windows.Forms.TableLayoutPanel();
-            this.dgvMain = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ratingtitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GamesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.menuItemCreate = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCreateGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCreateBook = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemCreateFilm = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBoxTableType = new System.Windows.Forms.ComboBox();
             this.BooksBS = new System.Windows.Forms.BindingSource(this.components);
             this.FilmsBS = new System.Windows.Forms.BindingSource(this.components);
-            this.layoutMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            this.comboBoxTableType = new System.Windows.Forms.ComboBox();
+            this.dgvMain = new System.Windows.Forms.DataGridView();
+            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ratingtitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.layoutMain = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.GamesBS)).BeginInit();
-            this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksBS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.FilmsBS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).BeginInit();
+            this.layoutMain.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // layoutMain
-            // 
-            this.layoutMain.ColumnCount = 2;
-            this.layoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 229F));
-            this.layoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutMain.Controls.Add(this.dgvMain, 0, 2);
-            this.layoutMain.Controls.Add(this.menuStrip, 0, 0);
-            this.layoutMain.Controls.Add(this.comboBoxTableType, 0, 1);
-            this.layoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutMain.Location = new System.Drawing.Point(0, 0);
-            this.layoutMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.layoutMain.Name = "layoutMain";
-            this.layoutMain.RowCount = 3;
-            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutMain.Size = new System.Drawing.Size(813, 791);
-            this.layoutMain.TabIndex = 0;
-            // 
-            // dgvMain
-            // 
-            this.dgvMain.AllowUserToDeleteRows = false;
-            this.dgvMain.AllowUserToResizeColumns = false;
-            this.dgvMain.AllowUserToResizeRows = false;
-            this.dgvMain.AutoGenerateColumns = false;
-            this.dgvMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMain.ColumnHeadersHeight = 29;
-            this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.titleDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn,
-            this.ratingtitleDataGridViewTextBoxColumn});
-            this.layoutMain.SetColumnSpan(this.dgvMain, 2);
-            this.dgvMain.DataSource = this.GamesBS;
-            this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvMain.Location = new System.Drawing.Point(3, 84);
-            this.dgvMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dgvMain.Name = "dgvMain";
-            this.dgvMain.ReadOnly = true;
-            this.dgvMain.RowHeadersVisible = false;
-            this.dgvMain.RowHeadersWidth = 51;
-            this.dgvMain.RowTemplate.Height = 25;
-            this.dgvMain.Size = new System.Drawing.Size(807, 703);
-            this.dgvMain.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCellsExceptHeader;
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.DividerWidth = 2;
-            this.idDataGridViewTextBoxColumn.FillWeight = 25F;
-            this.idDataGridViewTextBoxColumn.Frozen = true;
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.MinimumWidth = 50;
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 50;
-            // 
-            // titleDataGridViewTextBoxColumn
-            // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.DividerWidth = 2;
-            this.titleDataGridViewTextBoxColumn.FillWeight = 119.0731F;
-            this.titleDataGridViewTextBoxColumn.Frozen = true;
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Название";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 75;
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
-            this.titleDataGridViewTextBoxColumn.Width = 335;
-            // 
-            // descriptionDataGridViewTextBoxColumn
-            // 
-            this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
-            this.descriptionDataGridViewTextBoxColumn.DividerWidth = 2;
-            this.descriptionDataGridViewTextBoxColumn.FillWeight = 119.0731F;
-            this.descriptionDataGridViewTextBoxColumn.Frozen = true;
-            this.descriptionDataGridViewTextBoxColumn.HeaderText = "Описание";
-            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 75;
-            this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
-            this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
-            this.descriptionDataGridViewTextBoxColumn.Width = 335;
-            // 
-            // ratingtitleDataGridViewTextBoxColumn
-            // 
-            this.ratingtitleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ratingtitleDataGridViewTextBoxColumn.DataPropertyName = "Rating";
-            this.ratingtitleDataGridViewTextBoxColumn.DividerWidth = 2;
-            this.ratingtitleDataGridViewTextBoxColumn.FillWeight = 30F;
-            this.ratingtitleDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
-            this.ratingtitleDataGridViewTextBoxColumn.MaxInputLength = 2;
-            this.ratingtitleDataGridViewTextBoxColumn.MinimumWidth = 70;
-            this.ratingtitleDataGridViewTextBoxColumn.Name = "ratingtitleDataGridViewTextBoxColumn";
-            this.ratingtitleDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // GamesBS
             // 
             this.GamesBS.DataSource = typeof(ReviewsData.Model.Game);
             // 
-            // menuStrip
+            // BooksBS
             // 
-            this.layoutMain.SetColumnSpan(this.menuStrip, 2);
-            this.menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemCreate});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip.Size = new System.Drawing.Size(813, 30);
-            this.menuStrip.TabIndex = 1;
-            this.menuStrip.Text = "menuStrip1";
+            this.BooksBS.DataSource = typeof(ReviewsData.Model.Book);
             // 
-            // menuItemCreate
+            // FilmsBS
             // 
-            this.menuItemCreate.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuItemCreateGame,
-            this.menuItemCreateBook,
-            this.menuItemCreateFilm});
-            this.menuItemCreate.Name = "menuItemCreate";
-            this.menuItemCreate.Size = new System.Drawing.Size(78, 24);
-            this.menuItemCreate.Text = "Создать";
-            // 
-            // menuItemCreateGame
-            // 
-            this.menuItemCreateGame.Name = "menuItemCreateGame";
-            this.menuItemCreateGame.Size = new System.Drawing.Size(139, 26);
-            this.menuItemCreateGame.Text = "Игру...";
-            this.menuItemCreateGame.Click += new System.EventHandler(this.menuItemCreateGame_Click);
-            // 
-            // menuItemCreateBook
-            // 
-            this.menuItemCreateBook.Name = "menuItemCreateBook";
-            this.menuItemCreateBook.Size = new System.Drawing.Size(139, 26);
-            this.menuItemCreateBook.Text = "Книгу";
-            this.menuItemCreateBook.Click += new System.EventHandler(this.menuItemCreateBook_Click);
-            // 
-            // menuItemCreateFilm
-            // 
-            this.menuItemCreateFilm.Name = "menuItemCreateFilm";
-            this.menuItemCreateFilm.Size = new System.Drawing.Size(139, 26);
-            this.menuItemCreateFilm.Text = "Фильм";
-            this.menuItemCreateFilm.Click += new System.EventHandler(this.menuItemCreateFilm_Click);
+            this.FilmsBS.DataSource = typeof(ReviewsData.Model.Film);
             // 
             // comboBoxTableType
             // 
@@ -206,59 +65,103 @@
             "Игры",
             "Книги",
             "Фильмы"});
-            this.comboBoxTableType.Location = new System.Drawing.Point(3, 44);
-            this.comboBoxTableType.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.comboBoxTableType.Location = new System.Drawing.Point(10, 10);
+            this.comboBoxTableType.Margin = new System.Windows.Forms.Padding(10);
             this.comboBoxTableType.Name = "comboBoxTableType";
-            this.comboBoxTableType.Size = new System.Drawing.Size(223, 28);
+            this.comboBoxTableType.Size = new System.Drawing.Size(380, 28);
             this.comboBoxTableType.TabIndex = 2;
             this.comboBoxTableType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTableType_SelectedIndexChanged);
             // 
-            // BooksBS
+            // dgvMain
             // 
-            this.BooksBS.DataSource = typeof(ReviewsData.Model.Book);
+            this.dgvMain.AllowUserToDeleteRows = false;
+            this.dgvMain.AllowUserToResizeColumns = false;
+            this.dgvMain.AllowUserToResizeRows = false;
+            this.dgvMain.AutoGenerateColumns = false;
+            this.dgvMain.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.dgvMain.ColumnHeadersHeight = 29;
+            this.dgvMain.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.titleDataGridViewTextBoxColumn,
+            this.ratingtitleDataGridViewTextBoxColumn});
+            this.dgvMain.DataSource = this.GamesBS;
+            this.dgvMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvMain.Location = new System.Drawing.Point(25, 65);
+            this.dgvMain.Margin = new System.Windows.Forms.Padding(25);
+            this.dgvMain.Name = "dgvMain";
+            this.dgvMain.ReadOnly = true;
+            this.dgvMain.RowHeadersVisible = false;
+            this.dgvMain.RowHeadersWidth = 51;
+            this.dgvMain.RowTemplate.Height = 25;
+            this.dgvMain.Size = new System.Drawing.Size(350, 726);
+            this.dgvMain.TabIndex = 0;
+            this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellClick);
             // 
-            // FilmsBS
+            // titleDataGridViewTextBoxColumn
             // 
-            this.FilmsBS.DataSource = typeof(ReviewsData.Model.Film);
+            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
+            this.titleDataGridViewTextBoxColumn.DividerWidth = 2;
+            this.titleDataGridViewTextBoxColumn.FillWeight = 109.214F;
+            this.titleDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
+            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // ratingtitleDataGridViewTextBoxColumn
+            // 
+            this.ratingtitleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ratingtitleDataGridViewTextBoxColumn.DataPropertyName = "Rating";
+            this.ratingtitleDataGridViewTextBoxColumn.DividerWidth = 2;
+            this.ratingtitleDataGridViewTextBoxColumn.FillWeight = 39.85912F;
+            this.ratingtitleDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
+            this.ratingtitleDataGridViewTextBoxColumn.MaxInputLength = 2;
+            this.ratingtitleDataGridViewTextBoxColumn.MinimumWidth = 50;
+            this.ratingtitleDataGridViewTextBoxColumn.Name = "ratingtitleDataGridViewTextBoxColumn";
+            this.ratingtitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // layoutMain
+            // 
+            this.layoutMain.ColumnCount = 2;
+            this.layoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.layoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutMain.Controls.Add(this.dgvMain, 0, 1);
+            this.layoutMain.Controls.Add(this.comboBoxTableType, 0, 0);
+            this.layoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutMain.Location = new System.Drawing.Point(0, 0);
+            this.layoutMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.layoutMain.Name = "layoutMain";
+            this.layoutMain.RowCount = 2;
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutMain.Size = new System.Drawing.Size(1667, 816);
+            this.layoutMain.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 791);
+            this.ClientSize = new System.Drawing.Size(1667, 816);
             this.Controls.Add(this.layoutMain);
-            this.MainMenuStrip = this.menuStrip;
             this.Name = "MainForm";
             this.Text = "Браузер рецензий";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.layoutMain.ResumeLayout(false);
-            this.layoutMain.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GamesBS)).EndInit();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BooksBS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.FilmsBS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMain)).EndInit();
+            this.layoutMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private TableLayoutPanel layoutMain;
-        private DataGridView dgvMain;
-        private MenuStrip menuStrip;
-        private ToolStripMenuItem menuItemCreate;
-        private ToolStripMenuItem menuItemCreateGame;
         private BindingSource GamesBS;
-        private ComboBox comboBoxTableType;
-        private ToolStripMenuItem menuItemCreateBook;
-        private ToolStripMenuItem menuItemCreateFilm;
         private BindingSource BooksBS;
         private BindingSource FilmsBS;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private ComboBox comboBoxTableType;
+        private DataGridView dgvMain;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn ratingtitleDataGridViewTextBoxColumn;
+        private TableLayoutPanel layoutMain;
     }
 }

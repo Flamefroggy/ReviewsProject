@@ -4,6 +4,7 @@ using ReviewsData;
 using ReviewsData.Model;
 using ReviewsData.Service.Games;
 using ReviewsProject.View;
+using ReviewsProject.View.ButtonControls;
 
 namespace ReviewsProject
 {
@@ -15,6 +16,10 @@ namespace ReviewsProject
         List<Game> Games = new List<Game>();
         List<Book> Books = new List<Book>();
         List<Film> Films = new List<Film>();
+
+        private MainButtons mainButtons = new MainButtons();
+        private DataInteractionButtons dataInteractionButtons = new DataInteractionButtons();
+        private InfoView infoView = new InfoView();
 
         public MainForm()
         {
@@ -30,6 +35,8 @@ namespace ReviewsProject
                 _filmsManager = Program.ServiceProvider.GetService<IFilmsManager>();
             }
 
+            
+
             Games = _gamesManager.Get();
             Books = _booksManager.Get();
             Films = _filmsManager.Get();
@@ -39,6 +46,24 @@ namespace ReviewsProject
             FilmsBS.DataSource = Films;
 
             comboBoxTableType.SelectedIndex = 0;
+            dgvMain.ClearSelection();
+            layoutMain.Controls.Add(mainButtons, 1, 0);
+            mainButtons.Dock = DockStyle.Fill;
+
+        }
+
+        private void switchButtons()
+        {
+            if (layoutMain.Controls.Contains(mainButtons))
+            {
+                layoutMain.Controls.Remove(mainButtons);
+                layoutMain.Controls.Add(dataInteractionButtons);
+            }
+            else
+            {
+                layoutMain.Controls.Remove(dataInteractionButtons);
+                layoutMain.Controls.Add(mainButtons);
+            }
         }
 
         private void menuItemCreateGame_Click(object sender, EventArgs e)
@@ -93,6 +118,13 @@ namespace ReviewsProject
                     break;
             }
         }
+
+        private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            layoutMain.Controls.Add(infoView, 1, 1);
+            
+        }
+
 
     }
 

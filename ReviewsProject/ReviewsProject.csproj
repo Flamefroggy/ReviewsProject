@@ -21,6 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="View\ButtonControls\DataInteractionButtons.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="View\CreateBook.cs">
       <SubType>Form</SubType>
     </Compile>
