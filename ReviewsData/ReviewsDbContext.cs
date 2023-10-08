@@ -29,9 +29,9 @@ namespace ReviewsData
             builder.Entity<Book>()
                 .HasData(new Book[]
             {
-                new Book { Id = 1, Title = "Мойдодыр", Description = "хохол", NPages = 40, Rating = 7 },
-                new Book { Id = 2, Title = "Азбука", Description = "АБВГД", NPages = 35, Rating = 5 },
-                new Book { Id = 3, Title = "Дихотомия добра и зла", Description = "Аннотация – краткое описание книги, которое дает читателю представление о произведении, рассказывает завязку сюжета или обозначает общую тему книги. Обычно аннотация публикуется на обороте книги.", NPages = 565, Rating = 2 }
+                new Book { Id = 1, Title = "Мойдодыр", Description = "хохол", Rating = 7 },
+                new Book { Id = 2, Title = "Азбука", Description = "АБВГД", Rating = 5 },
+                new Book { Id = 3, Title = "Дихотомия добра и зла", Description = "Аннотация – краткое описание книги, которое дает читателю представление о произведении, рассказывает завязку сюжета или обозначает общую тему книги. Обычно аннотация публикуется на обороте книги.", Rating = 2 }
             });
 
             builder.Entity<Game>()

@@ -8,6 +8,6 @@ namespace ReviewsData.Model
 {
     public class Book : BaseEntity
     {
-        public int NPages { get; set; } 
+
     }
 }

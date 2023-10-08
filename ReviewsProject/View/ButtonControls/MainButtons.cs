@@ -12,32 +12,31 @@ namespace ReviewsProject.View.ButtonControls
 {
     public partial class MainButtons : UserControl
     {
+        public delegate void SwitchButtonHandler();
+        public event SwitchButtonHandler OnSwitch;
+    
         public MainButtons()
         {
 
             InitializeComponent();
         }
 
-        private void activate_Button()
+
+        public void SetEnabledButtons(bool value)
         {
-            changeButton.Enabled = true;
-            deleteButton.Enabled = true;
+            changeButton.Enabled = value;
+            deleteButton.Enabled = value;
         }
 
-        private void deactivate_Button()
-        {   
-            changeButton.Enabled = false;
-            deleteButton.Enabled = false;
-        }
 
         private void createButton_Click(object sender, EventArgs e)
         {
-
+            OnSwitch?.Invoke();
         }
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-
+            OnSwitch?.Invoke();
         }
 
         private void deleteButtons_Click(object sender, EventArgs e)

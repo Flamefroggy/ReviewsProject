@@ -35,8 +35,6 @@ namespace ReviewsProject
                 _filmsManager = Program.ServiceProvider.GetService<IFilmsManager>();
             }
 
-            
-
             Games = _gamesManager.Get();
             Books = _booksManager.Get();
             Films = _filmsManager.Get();
@@ -48,11 +46,15 @@ namespace ReviewsProject
             comboBoxTableType.SelectedIndex = 0;
             dgvMain.ClearSelection();
             layoutMain.Controls.Add(mainButtons, 1, 0);
-            mainButtons.Dock = DockStyle.Fill;
+            mainButtons.Dock = dataInteractionButtons.Dock =  DockStyle.Fill;
+            mainButtons.OnSwitch += switchButtons;
+            dataInteractionButtons.OnSwitch += switchButtons;
 
         }
 
-        private void switchButtons()
+
+
+        public void switchButtons()
         {
             if (layoutMain.Controls.Contains(mainButtons))
             {
@@ -66,42 +68,42 @@ namespace ReviewsProject
             }
         }
 
-        private void menuItemCreateGame_Click(object sender, EventArgs e)
-        {
-            var createForm = new CreateGame();
-            createForm.GameCreated += addGame;
-            createForm.ShowDialog();
-        }
-        private void menuItemCreateBook_Click(object sender, EventArgs e)
-        {
-            var createForm = new CreateBook();
-            createForm.BookCreated += addBook;
-            createForm.ShowDialog();
-        }
+        //private void menuItemCreateGame_Click(object sender, EventArgs e)
+        //{
+        //    var createForm = new CreateGame();
+        //    createForm.GameCreated += addGame;
+        //    createForm.ShowDialog();
+        //}
+        //private void menuItemCreateBook_Click(object sender, EventArgs e)
+        //{
+        //    var createForm = new CreateBook();
+        //    createForm.BookCreated += addBook;
+        //    createForm.ShowDialog();
+        //}
 
-        private void menuItemCreateFilm_Click(object sender, EventArgs e)
-        {
-            var createForm = new CreateFilm();
-            createForm.FilmCreated += addFilm;
-            createForm.ShowDialog();
-        }
+        //private void menuItemCreateFilm_Click(object sender, EventArgs e)
+        //{
+        //    var createForm = new CreateFilm();
+        //    createForm.FilmCreated += addFilm;
+        //    createForm.ShowDialog();
+        //}
 
-        private void addGame(Game game)
-        {
-            Games.Add(game);
-            GamesBS.ResetBindings(false);
-        }
+        //private void addGame(Game game)
+        //{
+        //    Games.Add(game);
+        //    GamesBS.ResetBindings(false);
+        //}
 
-        private void addBook(Book book)
-        {
-            Books.Add(book);
-            BooksBS.ResetBindings(false);
-        }
-        private void addFilm(Film film)
-        {
-            Films.Add(film);
-            FilmsBS.ResetBindings(false);
-        }
+        //private void addBook(Book book)
+        //{
+        //    Books.Add(book);
+        //    BooksBS.ResetBindings(false);
+        //}
+        //private void addFilm(Film film)
+        //{
+        //    Films.Add(film);
+        //    FilmsBS.ResetBindings(false);
+        //}
 
         private void comboBoxTableType_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -119,13 +121,12 @@ namespace ReviewsProject
             }
         }
 
-        private void dgvMain_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvMain_SelectionChanged(object sender, EventArgs e)
         {
             layoutMain.Controls.Add(infoView, 1, 1);
-            
+            mainButtons.SetEnabledButtons(true);
         }
-
-
     }
 
 }

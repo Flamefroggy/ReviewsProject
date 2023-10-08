@@ -12,6 +12,8 @@ namespace ReviewsProject.View.ButtonControls
 {
     public partial class DataInteractionButtons : UserControl
     {
+        public delegate void SwitchButtonHandler();
+        public event SwitchButtonHandler OnSwitch;
         public DataInteractionButtons()
         {
             InitializeComponent();
@@ -20,6 +22,7 @@ namespace ReviewsProject.View.ButtonControls
         private void saveButton_Click(object sender, EventArgs e)
         {
 
+            OnSwitch?.Invoke();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -29,7 +32,7 @@ namespace ReviewsProject.View.ButtonControls
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-
+            OnSwitch?.Invoke();
         }
     }
 }

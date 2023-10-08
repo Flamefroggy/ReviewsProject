@@ -94,7 +94,7 @@
             this.dgvMain.RowTemplate.Height = 25;
             this.dgvMain.Size = new System.Drawing.Size(350, 726);
             this.dgvMain.TabIndex = 0;
-            this.dgvMain.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMain_CellClick);
+            this.dgvMain.SelectionChanged += new System.EventHandler(this.dgvMain_SelectionChanged);
             // 
             // titleDataGridViewTextBoxColumn
             // 
