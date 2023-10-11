@@ -18,9 +18,9 @@ namespace ReviewsProject
         private IFilmsManager _filmsManager;
         private IEntityManager m_Manager;
 
-        private MainButtonsPanel m_MainButtonsPanel = new MainButtonsPanel();
-        private EditButtonsPanel m_EditButtonsPanel = new EditButtonsPanel();
-        private EntityView m_EntityView = new EntityView();
+        private MainButtonsPanel m_MainButtonsPanel = new();
+        private EditButtonsPanel m_EditButtonsPanel = new();
+        private EntityView m_EntityView = new();
 
         public MainForm(IGamesManager gamesManager, IBooksManager booksManager, IFilmsManager filmsManager)
         {
@@ -52,18 +52,13 @@ namespace ReviewsProject
             set
             {
                 m_EntityMode = value;
-                switch (value)
+                m_Manager = value switch
                 {
-                    case EntityMode.Games:
-                        m_Manager = _gamesManager;
-                        break;
-                    case EntityMode.Books:
-                        m_Manager = _booksManager;
-                        break;
-                    case EntityMode.Films:
-                        m_Manager = _filmsManager;
-                        break;
-                }
+                    EntityMode.Games => _gamesManager,
+                    EntityMode.Books => _booksManager,
+                    EntityMode.Films => _filmsManager,
+                    _ => throw new NotImplementedException()
+                };
                 refreshTable();
             }
         }
@@ -105,18 +100,13 @@ namespace ReviewsProject
 
         private void comboBoxTableType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBoxTableType.SelectedIndex)
+            Mode = comboBoxTableType.SelectedIndex switch
             {
-                case 0:
-                    Mode = EntityMode.Games;
-                    break;
-                case 1:
-                    Mode = EntityMode.Books;
-                    break;
-                case 2:
-                    Mode = EntityMode.Films;
-                    break;
-            }
+                0 => EntityMode.Games,
+                1 => EntityMode.Books,
+                2 => EntityMode.Films,
+                _ => throw new NotImplementedException(),
+            };
         }
 
         private void dgvMain_SelectionChanged(object sender, EventArgs e)
