@@ -3,8 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using ReviewsData;
 using ReviewsData.Model;
 using ReviewsData.Service.Games;
+using ReviewsProject.Utils;
 using ReviewsProject.View;
 using ReviewsProject.View.ButtonControls;
+using System.ComponentModel;
 
 namespace ReviewsProject
 {
@@ -13,9 +15,6 @@ namespace ReviewsProject
         private IGamesManager _gamesManager;
         private IBooksManager _booksManager;
         private IFilmsManager _filmsManager;
-        List<Game> Games = new List<Game>();
-        List<Book> Books = new List<Book>();
-        List<Film> Films = new List<Film>();
 
         private MainButtons mainButtons = new MainButtons();
         private DataInteractionButtons dataInteractionButtons = new DataInteractionButtons();
@@ -28,33 +27,69 @@ namespace ReviewsProject
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if(!DesignMode)
+            if (!DesignMode)
             {
                 _gamesManager = Program.ServiceProvider.GetService<IGamesManager>();
                 _booksManager = Program.ServiceProvider.GetService<IBooksManager>();
                 _filmsManager = Program.ServiceProvider.GetService<IFilmsManager>();
             }
 
-            Games = _gamesManager.Get();
-            Books = _booksManager.Get();
-            Films = _filmsManager.Get();
-
-            BooksBS.DataSource = Books;
-            GamesBS.DataSource = Games;
-            FilmsBS.DataSource = Films;
-
             comboBoxTableType.SelectedIndex = 0;
             dgvMain.ClearSelection();
             layoutMain.Controls.Add(mainButtons, 1, 0);
-            mainButtons.Dock = dataInteractionButtons.Dock =  DockStyle.Fill;
-            mainButtons.OnSwitch += switchButtons;
-            dataInteractionButtons.OnSwitch += switchButtons;
+            mainButtons.Dock = dataInteractionButtons.Dock = DockStyle.Fill;
+            mainButtons.OnSwitch += SwitchButtons;
+            dataInteractionButtons.OnSwitch += SwitchButtons;
 
         }
 
+        private EntityMode m_EntityMode;
+        public EntityMode Mode
+        {
+            get
+            {
+                return m_EntityMode;
+            }
+            set
+            {
+                m_EntityMode = value;
+                refreshTable(value);
+            }
+        }
 
+        public BindingList<BaseEntity> Entities
+        {
+            get
+            {
+                if (null != EntitiesBS.DataSource)
+                {
+                    return EntitiesBS.DataSource as BindingList<BaseEntity>;
+                }
+                return null;
+            }
+            set
+            {
+                EntitiesBS.DataSource = value;
+            }
+        }
 
-        public void switchButtons()
+        private void refreshTable(EntityMode mode)
+        {
+            switch (mode)
+            {
+                case EntityMode.Games:
+                    Entities = new BindingList<BaseEntity>(_gamesManager.Get().Cast<BaseEntity>().ToList());
+                    break;
+                case EntityMode.Books:
+                    Entities = new BindingList<BaseEntity>(_booksManager.Get().Cast<BaseEntity>().ToList());
+                    break;
+                case EntityMode.Films:
+                    Entities = new BindingList<BaseEntity>(_filmsManager.Get().Cast<BaseEntity>().ToList());
+                    break;
+            }
+        }
+
+        public void SwitchButtons()
         {
             if (layoutMain.Controls.Contains(mainButtons))
             {
@@ -68,59 +103,22 @@ namespace ReviewsProject
             }
         }
 
-        //private void menuItemCreateGame_Click(object sender, EventArgs e)
-        //{
-        //    var createForm = new CreateGame();
-        //    createForm.GameCreated += addGame;
-        //    createForm.ShowDialog();
-        //}
-        //private void menuItemCreateBook_Click(object sender, EventArgs e)
-        //{
-        //    var createForm = new CreateBook();
-        //    createForm.BookCreated += addBook;
-        //    createForm.ShowDialog();
-        //}
-
-        //private void menuItemCreateFilm_Click(object sender, EventArgs e)
-        //{
-        //    var createForm = new CreateFilm();
-        //    createForm.FilmCreated += addFilm;
-        //    createForm.ShowDialog();
-        //}
-
-        //private void addGame(Game game)
-        //{
-        //    Games.Add(game);
-        //    GamesBS.ResetBindings(false);
-        //}
-
-        //private void addBook(Book book)
-        //{
-        //    Books.Add(book);
-        //    BooksBS.ResetBindings(false);
-        //}
-        //private void addFilm(Film film)
-        //{
-        //    Films.Add(film);
-        //    FilmsBS.ResetBindings(false);
-        //}
-
         private void comboBoxTableType_SelectedIndexChanged(object sender, EventArgs e)
         {
+            EntityMode mode;
             switch (comboBoxTableType.SelectedIndex)
             {
                 case 0:
-                    dgvMain.DataSource = GamesBS;
+                    Mode = EntityMode.Games;
                     break;
                 case 1:
-                    dgvMain.DataSource = BooksBS;
+                    Mode = EntityMode.Books;
                     break;
                 case 2:
-                    dgvMain.DataSource = FilmsBS;
+                    Mode = EntityMode.Films;
                     break;
             }
         }
-
 
         private void dgvMain_SelectionChanged(object sender, EventArgs e)
         {
