@@ -20,27 +20,22 @@ namespace ReviewsProject
         private DataInteractionButtons dataInteractionButtons = new DataInteractionButtons();
         private InfoView infoView = new InfoView();
 
-        public MainForm()
+        public MainForm(IGamesManager gamesManager, IBooksManager booksManager, IFilmsManager filmsManager)
         {
             InitializeComponent();
+            _gamesManager = gamesManager;
+            _booksManager = booksManager;
+            _filmsManager = filmsManager;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            if (!DesignMode)
-            {
-                _gamesManager = Program.ServiceProvider.GetService<IGamesManager>();
-                _booksManager = Program.ServiceProvider.GetService<IBooksManager>();
-                _filmsManager = Program.ServiceProvider.GetService<IFilmsManager>();
-            }
-
             comboBoxTableType.SelectedIndex = 0;
             dgvMain.ClearSelection();
             layoutMain.Controls.Add(mainButtons, 1, 0);
             mainButtons.Dock = dataInteractionButtons.Dock = DockStyle.Fill;
             mainButtons.OnSwitch += SwitchButtons;
             dataInteractionButtons.OnSwitch += SwitchButtons;
-
         }
 
         private EntityMode m_EntityMode;
@@ -105,7 +100,6 @@ namespace ReviewsProject
 
         private void comboBoxTableType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            EntityMode mode;
             switch (comboBoxTableType.SelectedIndex)
             {
                 case 0:

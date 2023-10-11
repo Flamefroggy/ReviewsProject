@@ -16,7 +16,7 @@ namespace ReviewsProject
         {
             ApplicationConfiguration.Initialize();
             ConfigureServices();
-            Application.Run(new MainForm());
+            Application.Run(ServiceProvider.GetService<MainForm>());
         }
         public static IServiceProvider ServiceProvider { get; private set; }
 
@@ -28,6 +28,7 @@ namespace ReviewsProject
             var services = new ServiceCollection();
 
             services.AddSingleton(configuration);
+            services.AddSingleton<MainForm>();
             services.AddSingleton<IGamesManager, GamesManager>();
             services.AddSingleton<IBooksManager, BooksManager>();
             services.AddSingleton<IFilmsManager, FilmsManager>();
