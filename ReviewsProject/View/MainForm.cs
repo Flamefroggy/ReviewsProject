@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ReviewsData;
 using ReviewsData.Model;
+using ReviewsData.Service;
 using ReviewsData.Service.Games;
 using ReviewsProject.Utils;
 using ReviewsProject.View;
@@ -15,10 +16,11 @@ namespace ReviewsProject
         private IGamesManager _gamesManager;
         private IBooksManager _booksManager;
         private IFilmsManager _filmsManager;
+        private IEntityManager m_Manager;
 
-        private MainButtons mainButtons = new MainButtons();
-        private DataInteractionButtons dataInteractionButtons = new DataInteractionButtons();
-        private InfoView infoView = new InfoView();
+        private MainButtonsPanel m_MainButtonsPanel = new MainButtonsPanel();
+        private EditButtonsPanel m_EditButtonsPanel = new EditButtonsPanel();
+        private EntityView m_EntityView = new EntityView();
 
         public MainForm(IGamesManager gamesManager, IBooksManager booksManager, IFilmsManager filmsManager)
         {
@@ -32,10 +34,12 @@ namespace ReviewsProject
         {
             comboBoxTableType.SelectedIndex = 0;
             dgvMain.ClearSelection();
-            layoutMain.Controls.Add(mainButtons, 1, 0);
-            mainButtons.Dock = dataInteractionButtons.Dock = DockStyle.Fill;
-            mainButtons.OnSwitch += SwitchButtons;
-            dataInteractionButtons.OnSwitch += SwitchButtons;
+            layoutMain.Controls.Add(m_MainButtonsPanel, 1, 0);
+            m_MainButtonsPanel.Dock = m_EditButtonsPanel.Dock = DockStyle.Fill;
+            m_MainButtonsPanel.OnCreate += switchButtons;
+            m_EditButtonsPanel.OnSwitch += switchButtons;
+
+            Mode = EntityMode.Games;
         }
 
         private EntityMode m_EntityMode;
@@ -48,11 +52,23 @@ namespace ReviewsProject
             set
             {
                 m_EntityMode = value;
-                refreshTable(value);
+                switch (value)
+                {
+                    case EntityMode.Games:
+                        m_Manager = _gamesManager;
+                        break;
+                    case EntityMode.Books:
+                        m_Manager = _booksManager;
+                        break;
+                    case EntityMode.Films:
+                        m_Manager = _filmsManager;
+                        break;
+                }
+                refreshTable();
             }
         }
 
-        public BindingList<BaseEntity> Entities
+        private BindingList<BaseEntity> m_Entities
         {
             get
             {
@@ -68,33 +84,22 @@ namespace ReviewsProject
             }
         }
 
-        private void refreshTable(EntityMode mode)
+        private void refreshTable()
         {
-            switch (mode)
-            {
-                case EntityMode.Games:
-                    Entities = new BindingList<BaseEntity>(_gamesManager.Get().Cast<BaseEntity>().ToList());
-                    break;
-                case EntityMode.Books:
-                    Entities = new BindingList<BaseEntity>(_booksManager.Get().Cast<BaseEntity>().ToList());
-                    break;
-                case EntityMode.Films:
-                    Entities = new BindingList<BaseEntity>(_filmsManager.Get().Cast<BaseEntity>().ToList());
-                    break;
-            }
+            m_Entities = new BindingList<BaseEntity>(m_Manager.Get());
         }
 
-        public void SwitchButtons()
+        private void switchButtons()
         {
-            if (layoutMain.Controls.Contains(mainButtons))
+            if (layoutMain.Controls.Contains(m_MainButtonsPanel))
             {
-                layoutMain.Controls.Remove(mainButtons);
-                layoutMain.Controls.Add(dataInteractionButtons);
+                layoutMain.Controls.Remove(m_MainButtonsPanel);
+                layoutMain.Controls.Add(m_EditButtonsPanel);
             }
             else
             {
-                layoutMain.Controls.Remove(dataInteractionButtons);
-                layoutMain.Controls.Add(mainButtons);
+                layoutMain.Controls.Remove(m_EditButtonsPanel);
+                layoutMain.Controls.Add(m_MainButtonsPanel);
             }
         }
 
@@ -116,9 +121,47 @@ namespace ReviewsProject
 
         private void dgvMain_SelectionChanged(object sender, EventArgs e)
         {
-            layoutMain.Controls.Add(infoView, 1, 1);
-            mainButtons.SetEnabledButtons(true);
+            layoutMain.Controls.Add(m_EntityView, 1, 1);
+            m_MainButtonsPanel.SetEnabledButtons(true);
         }
+
+        #region MainButtons handlers
+
+        private void onCreateClick()
+        {
+
+        }
+
+        private void onEditClick()
+        {
+
+        }
+
+        private void onDeleteClick()
+        {
+
+        }
+
+        #endregion
+
+        #region EditButtons handlers
+
+        private void onSaveClick()
+        {
+
+        }
+
+        private void onResetClick()
+        {
+
+        }
+
+        private void onCancelClick()
+        {
+
+        }
+
+        #endregion
     }
 
 }

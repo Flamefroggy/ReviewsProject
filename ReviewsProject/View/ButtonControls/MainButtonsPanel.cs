@@ -10,12 +10,14 @@ using System.Windows.Forms;
 
 namespace ReviewsProject.View.ButtonControls
 {
-    public partial class MainButtons : UserControl
+    public partial class MainButtonsPanel : UserControl
     {
-        public delegate void SwitchButtonHandler();
-        public event SwitchButtonHandler OnSwitch;
+        public delegate void MainButtonsEventHandler();
+        public event MainButtonsEventHandler OnCreate;
+        public event MainButtonsEventHandler OnEdit;
+        public event MainButtonsEventHandler OnDelete;
     
-        public MainButtons()
+        public MainButtonsPanel()
         {
 
             InitializeComponent();
@@ -31,17 +33,17 @@ namespace ReviewsProject.View.ButtonControls
 
         private void createButton_Click(object sender, EventArgs e)
         {
-            OnSwitch?.Invoke();
+            OnCreate?.Invoke();
         }
 
         private void changeButton_Click(object sender, EventArgs e)
         {
-            OnSwitch?.Invoke();
+            OnEdit?.Invoke();
         }
 
         private void deleteButtons_Click(object sender, EventArgs e)
         {
-
+            OnDelete?.Invoke();
         }
     }
 }

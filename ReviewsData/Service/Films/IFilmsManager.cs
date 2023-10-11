@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace ReviewsData.Service.Games
 {
-    public interface IFilmsManager
+    public interface IFilmsManager : IEntityManager
     {
-        List<Film> Get();
+
     }
 }

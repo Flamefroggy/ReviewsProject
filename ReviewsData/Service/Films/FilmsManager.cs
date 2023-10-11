@@ -15,12 +15,12 @@ namespace ReviewsData.Service.Games
         {
             _contextFactory = contextFactory;
         }
-        public List<Film> Get()
+        public List<BaseEntity> Get()
         {
             using var db = _contextFactory.CreateDbContext();
             try
             {
-                return db.Films.ToList();
+                return db.Films.Cast<BaseEntity>().ToList();
             }
             catch (Exception ex)
             {

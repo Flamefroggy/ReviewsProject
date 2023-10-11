@@ -1,6 +1,6 @@
 ﻿namespace ReviewsProject.View.ButtonControls
 {
-    partial class MainButtons
+    partial class MainButtonsPanel
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

@@ -5,10 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ReviewsData.Service.Games
+namespace ReviewsData.Service
 {
-    public interface IBooksManager : IEntityManager
+    public interface IEntityManager
     {
-
+        List<BaseEntity> Get();
     }
 }

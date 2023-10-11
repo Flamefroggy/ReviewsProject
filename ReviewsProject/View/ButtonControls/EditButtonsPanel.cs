@@ -10,11 +10,11 @@ using System.Windows.Forms;
 
 namespace ReviewsProject.View.ButtonControls
 {
-    public partial class DataInteractionButtons : UserControl
+    public partial class EditButtonsPanel : UserControl
     {
         public delegate void SwitchButtonHandler();
         public event SwitchButtonHandler OnSwitch;
-        public DataInteractionButtons()
+        public EditButtonsPanel()
         {
             InitializeComponent();
         }
