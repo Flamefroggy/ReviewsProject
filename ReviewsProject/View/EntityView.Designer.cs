@@ -120,6 +120,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "EntityView";
             this.Size = new System.Drawing.Size(542, 306);
+            this.Load += new System.EventHandler(this.EntityView_Load);
             this.infoViewMain.ResumeLayout(false);
             this.infoViewMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();

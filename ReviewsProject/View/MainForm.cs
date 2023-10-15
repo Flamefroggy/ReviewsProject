@@ -35,15 +35,15 @@ namespace ReviewsProject
             comboBoxTableType.SelectedIndex = 0;
             dgvEntities.ClearSelection();
             layoutMain.Controls.Add(m_MainButtonsPanel, 1, 0);
-            m_EntityView.Dock =  m_MainButtonsPanel.Dock = m_EditButtonsPanel.Dock = DockStyle.Fill;
+            m_EntityView.Dock = m_MainButtonsPanel.Dock = m_EditButtonsPanel.Dock = DockStyle.Fill;
             #region event binding
 
             m_MainButtonsPanel.OnCreate += onCreateClick;
             m_MainButtonsPanel.OnEdit += onEditClick;
             m_MainButtonsPanel.OnDelete += onDeleteClick;
             m_EditButtonsPanel.OnSave += onSaveClick;
-            m_EditButtonsPanel.OnCancel += onCancelClick;
             m_EditButtonsPanel.OnReset += onResetClick;
+            m_EditButtonsPanel.OnCancel += onCancelClick;
 
             #endregion
 
@@ -159,25 +159,18 @@ namespace ReviewsProject
         private void onCreateClick()
         {
             switchButtons();
-            //enter creation mode
+            m_EntityView.Mode = EntityViewMode.Create;
         }
 
         private void onEditClick()
         {
             switchButtons();
-            //enter edit mode
+            m_EntityView.Mode = EntityViewMode.Edit;
         }
 
         private void onDeleteClick()
         {
-            try
-            {
-                m_Manager.Delete(m_EntityView.Entity);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"При удалении записи произошла ошибка!{Environment.NewLine}{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            handleAction(() => m_Manager.Delete(m_EntityView.Entity));
         }
 
         #endregion
@@ -186,8 +179,22 @@ namespace ReviewsProject
 
         private void onSaveClick()
         {
+            var isSuccessful = false;
             //save data + switch to view
-            switchButtons();
+            switch (m_EntityView.Mode)
+            {
+                case EntityViewMode.Create:
+                    isSuccessful = handleAction(() => m_Manager.Create(m_EntityView.Entity));
+                    break;
+                case EntityViewMode.Edit:
+                    isSuccessful = handleAction(() => m_Manager.Edit(m_EntityView.Entity));
+                    break;
+            }
+            if (isSuccessful)
+            {
+                m_EntityView.Mode = EntityViewMode.View;
+                switchButtons();
+            }
         }
 
         private void onResetClick()
@@ -198,10 +205,29 @@ namespace ReviewsProject
         private void onCancelClick()
         {
             //reset data + switch to view
+            m_EntityView.Mode = EntityViewMode.View;
             switchButtons();
         }
 
         #endregion
-    }
 
+        /// <summary>
+        /// Выполнение метода в обработчике ошибок.
+        /// </summary>
+        /// <param name="action">Выполняемый метод</param>
+        /// <returns>true - исполнение без ошибок<br/> false - произошла ошибка</returns>
+        private bool handleAction(Action action)
+        {
+            try
+            {
+                action.Invoke();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+    }
 }

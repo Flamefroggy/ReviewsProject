@@ -28,14 +28,14 @@ namespace ReviewsProject.View.ButtonControls
             OnSave?.Invoke();
         }
 
-        private void clearButton_Click(object sender, EventArgs e)
+        private void resetButton_Click(object sender, EventArgs e)
         {
-
+            OnReset?.Invoke();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            OnSave?.Invoke();
+            OnCancel?.Invoke();
         }
     }
 }
