@@ -13,9 +13,9 @@ namespace ReviewsProject
 {
     public partial class MainForm : Form
     {
-        private IGamesManager _gamesManager;
-        private IBooksManager _booksManager;
-        private IFilmsManager _filmsManager;
+        private readonly IGamesManager _gamesManager;
+        private readonly IBooksManager _booksManager;
+        private readonly IFilmsManager _filmsManager;
         private IEntityManager m_Manager;
 
         private MainButtonsPanel m_MainButtonsPanel = new();
@@ -33,11 +33,19 @@ namespace ReviewsProject
         private void MainForm_Load(object sender, EventArgs e)
         {
             comboBoxTableType.SelectedIndex = 0;
-            dgvMain.ClearSelection();
+            dgvEntities.ClearSelection();
             layoutMain.Controls.Add(m_MainButtonsPanel, 1, 0);
-            m_MainButtonsPanel.Dock = m_EditButtonsPanel.Dock = DockStyle.Fill;
-            m_MainButtonsPanel.OnCreate += switchButtons;
-            m_EditButtonsPanel.OnSwitch += switchButtons;
+            m_EntityView.Dock =  m_MainButtonsPanel.Dock = m_EditButtonsPanel.Dock = DockStyle.Fill;
+            #region event binding
+
+            m_MainButtonsPanel.OnCreate += onCreateClick;
+            m_MainButtonsPanel.OnEdit += onEditClick;
+            m_MainButtonsPanel.OnDelete += onDeleteClick;
+            m_EditButtonsPanel.OnSave += onSaveClick;
+            m_EditButtonsPanel.OnCancel += onCancelClick;
+            m_EditButtonsPanel.OnReset += onResetClick;
+
+            #endregion
 
             Mode = EntityMode.Games;
         }
@@ -63,7 +71,7 @@ namespace ReviewsProject
             }
         }
 
-        private BindingList<BaseEntity> m_Entities
+        private BindingList<BaseEntity>? m_Entities
         {
             get
             {
@@ -76,6 +84,36 @@ namespace ReviewsProject
             set
             {
                 EntitiesBS.DataSource = value;
+            }
+        }
+
+        private BaseEntity? m_SelectedEntity
+        {
+            get
+            {
+                if (dgvEntities.SelectedRows.Count == 0) return null;
+                if (dgvEntities.SelectedRows[0] != null)//есть выбранная строка?
+                {
+                    if (dgvEntities.SelectedRows[0].DataBoundItem != null)
+                    {
+                        return (BaseEntity)dgvEntities.SelectedRows[0].DataBoundItem;
+                    }
+                    else return null;
+                }
+                else return null;
+            }
+            set
+            {
+                if (null == value) return;
+                foreach (DataGridViewRow row in dgvEntities.Rows)
+                {
+                    if (row.Cells[0].Value.Equals(value.Id))
+                    {
+                        dgvEntities.ClearSelection();
+                        dgvEntities.Rows[row.Index].Selected = true;
+                        break;
+                    }
+                }
             }
         }
 
@@ -113,23 +151,33 @@ namespace ReviewsProject
         {
             layoutMain.Controls.Add(m_EntityView, 1, 1);
             m_MainButtonsPanel.SetEnabledButtons(true);
+            m_EntityView.Entity = m_SelectedEntity;
         }
 
         #region MainButtons handlers
 
         private void onCreateClick()
         {
-
+            switchButtons();
+            //enter creation mode
         }
 
         private void onEditClick()
         {
-
+            switchButtons();
+            //enter edit mode
         }
 
         private void onDeleteClick()
         {
-
+            try
+            {
+                m_Manager.Delete(m_EntityView.Entity);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"При удалении записи произошла ошибка!{Environment.NewLine}{ex.Message}", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         #endregion
@@ -138,17 +186,19 @@ namespace ReviewsProject
 
         private void onSaveClick()
         {
-
+            //save data + switch to view
+            switchButtons();
         }
 
         private void onResetClick()
         {
-
+            //reset data
         }
 
         private void onCancelClick()
         {
-
+            //reset data + switch to view
+            switchButtons();
         }
 
         #endregion

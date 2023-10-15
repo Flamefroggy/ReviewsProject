@@ -10,7 +10,7 @@ namespace ReviewsData.Service.Games
 {
     public class BooksManager : IBooksManager
     {
-        private IDbContextFactory<ReviewsDbContext> _contextFactory;
+        private readonly IDbContextFactory<ReviewsDbContext> _contextFactory;
         public BooksManager(IDbContextFactory<ReviewsDbContext> contextFactory)
         {
             _contextFactory = contextFactory;
@@ -26,6 +26,21 @@ namespace ReviewsData.Service.Games
             {
                 throw new Exception("Не удалось выполнить", ex);
             }
+        }
+        
+        public BaseEntity Create(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public BaseEntity Edit(BaseEntity entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(BaseEntity entity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

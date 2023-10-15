@@ -10,5 +10,8 @@ namespace ReviewsData.Service
     public interface IEntityManager
     {
         List<BaseEntity> Get();
+        BaseEntity Create(BaseEntity entity);
+        BaseEntity Edit(BaseEntity entity);
+        void Delete(BaseEntity entity);
     }
 }

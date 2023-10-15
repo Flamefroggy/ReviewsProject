@@ -18,9 +18,9 @@ namespace ReviewsProject.View
             InitializeComponent();
         }
 
-        private BaseEntity m_Entity
+        public BaseEntity Entity
         {
-            get { return (BaseEntity)EntityBS.DataSource; }
+            get { return EntityBS.DataSource as BaseEntity; }
             set { if (null != value) EntityBS.DataSource = value; }
         }
     }

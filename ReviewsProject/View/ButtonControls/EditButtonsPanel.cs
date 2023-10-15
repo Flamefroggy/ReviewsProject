@@ -13,7 +13,10 @@ namespace ReviewsProject.View.ButtonControls
     public partial class EditButtonsPanel : UserControl
     {
         public delegate void SwitchButtonHandler();
-        public event SwitchButtonHandler OnSwitch;
+        public event SwitchButtonHandler OnSave;
+        public event SwitchButtonHandler OnReset;
+        public event SwitchButtonHandler OnCancel;
+
         public EditButtonsPanel()
         {
             InitializeComponent();
@@ -22,7 +25,7 @@ namespace ReviewsProject.View.ButtonControls
         private void saveButton_Click(object sender, EventArgs e)
         {
 
-            OnSwitch?.Invoke();
+            OnSave?.Invoke();
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -32,7 +35,7 @@ namespace ReviewsProject.View.ButtonControls
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
-            OnSwitch?.Invoke();
+            OnSave?.Invoke();
         }
     }
 }
