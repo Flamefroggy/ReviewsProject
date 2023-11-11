@@ -1,14 +1,11 @@
 ﻿using ReviewsData.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ReviewsData.Service.Games
+namespace ReviewsData.Service.Games;
+
+public interface IGamesManager
 {
-    public interface IGamesManager : IEntityManager
-    {
-
-    }
+    List<Game> Get();
+    Game Create(Game game);
+    Game Update(Game game);
+    void Delete(Game game);
 }

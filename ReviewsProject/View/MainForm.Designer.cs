@@ -28,129 +28,129 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.EntitiesBS = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBoxTableType = new System.Windows.Forms.ComboBox();
-            this.dgvEntities = new System.Windows.Forms.DataGridView();
-            this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ratingtitleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.layoutMain = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.EntitiesBS)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEntities)).BeginInit();
-            this.layoutMain.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            GamesBS = new BindingSource(components);
+            dgvEntities = new DataGridView();
+            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            ratingtitleDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            layoutMain = new TableLayoutPanel();
+            ((System.ComponentModel.ISupportInitialize)GamesBS).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEntities).BeginInit();
+            layoutMain.SuspendLayout();
+            SuspendLayout();
             // 
-            // EntitiesBS
+            // GamesBS
             // 
-            this.EntitiesBS.DataSource = typeof(ReviewsData.Model.BaseEntity);
-            // 
-            // comboBoxTableType
-            // 
-            this.comboBoxTableType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.comboBoxTableType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxTableType.FormattingEnabled = true;
-            this.comboBoxTableType.Items.AddRange(new object[] {
-            "Игры",
-            "Книги",
-            "Фильмы"});
-            this.comboBoxTableType.Location = new System.Drawing.Point(8, 8);
-            this.comboBoxTableType.Margin = new System.Windows.Forms.Padding(8);
-            this.comboBoxTableType.Name = "comboBoxTableType";
-            this.comboBoxTableType.Size = new System.Drawing.Size(334, 23);
-            this.comboBoxTableType.TabIndex = 2;
-            this.comboBoxTableType.SelectedIndexChanged += new System.EventHandler(this.comboBoxTableType_SelectedIndexChanged);
+            GamesBS.DataSource = typeof(ReviewsData.Model.Game);
             // 
             // dgvEntities
             // 
-            this.dgvEntities.AllowUserToAddRows = false;
-            this.dgvEntities.AllowUserToDeleteRows = false;
-            this.dgvEntities.AllowUserToResizeColumns = false;
-            this.dgvEntities.AllowUserToResizeRows = false;
-            this.dgvEntities.AutoGenerateColumns = false;
-            this.dgvEntities.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.dgvEntities.BackgroundColor = System.Drawing.Color.White;
-            this.dgvEntities.ColumnHeadersHeight = 29;
-            this.dgvEntities.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.titleDataGridViewTextBoxColumn,
-            this.ratingtitleDataGridViewTextBoxColumn});
-            this.dgvEntities.DataSource = this.EntitiesBS;
-            this.dgvEntities.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvEntities.Location = new System.Drawing.Point(8, 38);
-            this.dgvEntities.Margin = new System.Windows.Forms.Padding(8);
-            this.dgvEntities.MultiSelect = false;
-            this.dgvEntities.Name = "dgvEntities";
-            this.dgvEntities.ReadOnly = true;
-            this.dgvEntities.RowHeadersVisible = false;
-            this.dgvEntities.RowHeadersWidth = 51;
-            this.dgvEntities.RowTemplate.Height = 25;
-            this.dgvEntities.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEntities.Size = new System.Drawing.Size(334, 427);
-            this.dgvEntities.TabIndex = 0;
-            this.dgvEntities.SelectionChanged += new System.EventHandler(this.dgvMain_SelectionChanged);
+            dgvEntities.AllowUserToAddRows = false;
+            dgvEntities.AllowUserToDeleteRows = false;
+            dgvEntities.AllowUserToResizeColumns = false;
+            dgvEntities.AllowUserToResizeRows = false;
+            dgvEntities.AutoGenerateColumns = false;
+            dgvEntities.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvEntities.BackgroundColor = Color.White;
+            dgvEntities.ColumnHeadersHeight = 29;
+            dgvEntities.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, ratingtitleDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn });
+            dgvEntities.DataSource = GamesBS;
+            dgvEntities.Dock = DockStyle.Fill;
+            dgvEntities.Location = new Point(8, 8);
+            dgvEntities.Margin = new Padding(8);
+            dgvEntities.MultiSelect = false;
+            dgvEntities.Name = "dgvEntities";
+            dgvEntities.ReadOnly = true;
+            dgvEntities.RowHeadersVisible = false;
+            dgvEntities.RowHeadersWidth = 51;
+            layoutMain.SetRowSpan(dgvEntities, 2);
+            dgvEntities.RowTemplate.Height = 25;
+            dgvEntities.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvEntities.Size = new Size(334, 457);
+            dgvEntities.TabIndex = 0;
+            dgvEntities.SelectionChanged += dgvMain_SelectionChanged;
             // 
-            // titleDataGridViewTextBoxColumn
+            // idDataGridViewTextBoxColumn
             // 
-            this.titleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.titleDataGridViewTextBoxColumn.DataPropertyName = "Title";
-            this.titleDataGridViewTextBoxColumn.DividerWidth = 2;
-            this.titleDataGridViewTextBoxColumn.FillWeight = 109.214F;
-            this.titleDataGridViewTextBoxColumn.HeaderText = "Название";
-            this.titleDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.titleDataGridViewTextBoxColumn.Name = "titleDataGridViewTextBoxColumn";
-            this.titleDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            idDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.Visible = false;
+            idDataGridViewTextBoxColumn.Width = 42;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Название";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
+            nameDataGridViewTextBoxColumn.Width = 84;
             // 
             // ratingtitleDataGridViewTextBoxColumn
             // 
-            this.ratingtitleDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ratingtitleDataGridViewTextBoxColumn.DataPropertyName = "Rating";
-            this.ratingtitleDataGridViewTextBoxColumn.DividerWidth = 2;
-            this.ratingtitleDataGridViewTextBoxColumn.FillWeight = 39.85912F;
-            this.ratingtitleDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
-            this.ratingtitleDataGridViewTextBoxColumn.MaxInputLength = 2;
-            this.ratingtitleDataGridViewTextBoxColumn.MinimumWidth = 50;
-            this.ratingtitleDataGridViewTextBoxColumn.Name = "ratingtitleDataGridViewTextBoxColumn";
-            this.ratingtitleDataGridViewTextBoxColumn.ReadOnly = true;
+            ratingtitleDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ratingtitleDataGridViewTextBoxColumn.DataPropertyName = "Rating";
+            ratingtitleDataGridViewTextBoxColumn.DividerWidth = 2;
+            ratingtitleDataGridViewTextBoxColumn.FillWeight = 39.85912F;
+            ratingtitleDataGridViewTextBoxColumn.HeaderText = "Рейтинг";
+            ratingtitleDataGridViewTextBoxColumn.MaxInputLength = 2;
+            ratingtitleDataGridViewTextBoxColumn.MinimumWidth = 50;
+            ratingtitleDataGridViewTextBoxColumn.Name = "ratingtitleDataGridViewTextBoxColumn";
+            ratingtitleDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Visible = false;
+            descriptionDataGridViewTextBoxColumn.Width = 92;
             // 
             // layoutMain
             // 
-            this.layoutMain.ColumnCount = 2;
-            this.layoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 350F));
-            this.layoutMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutMain.Controls.Add(this.dgvEntities, 0, 1);
-            this.layoutMain.Controls.Add(this.comboBoxTableType, 0, 0);
-            this.layoutMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutMain.Location = new System.Drawing.Point(0, 0);
-            this.layoutMain.Name = "layoutMain";
-            this.layoutMain.RowCount = 2;
-            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.layoutMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutMain.Size = new System.Drawing.Size(787, 473);
-            this.layoutMain.TabIndex = 0;
+            layoutMain.ColumnCount = 2;
+            layoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 350F));
+            layoutMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            layoutMain.Controls.Add(dgvEntities, 0, 0);
+            layoutMain.Dock = DockStyle.Fill;
+            layoutMain.Location = new Point(0, 0);
+            layoutMain.Name = "layoutMain";
+            layoutMain.RowCount = 2;
+            layoutMain.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            layoutMain.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            layoutMain.Size = new Size(787, 473);
+            layoutMain.TabIndex = 0;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 473);
-            this.Controls.Add(this.layoutMain);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "MainForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Браузер рецензий";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.EntitiesBS)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvEntities)).EndInit();
-            this.layoutMain.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(787, 473);
+            Controls.Add(layoutMain);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Браузер рецензий";
+            Load += MainForm_Load;
+            ((System.ComponentModel.ISupportInitialize)GamesBS).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvEntities).EndInit();
+            layoutMain.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
-        private BindingSource EntitiesBS;
-        private ComboBox comboBoxTableType;
+        private BindingSource GamesBS;
         private DataGridView dgvEntities;
         private DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn ratingtitleDataGridViewTextBoxColumn;
         private TableLayoutPanel layoutMain;
+        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn ratingtitleDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
     }
 }

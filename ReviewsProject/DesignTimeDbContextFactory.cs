@@ -18,7 +18,7 @@ namespace ReviewsProject
             IConfiguration configuration = configurationBuilder.Build();
 
             var optionsBuilder = new DbContextOptionsBuilder<ReviewsDbContext>();
-            optionsBuilder.UseNpgsql(configuration["ConnectionStrings:Npgsql"]);
+            optionsBuilder.UseNpgsql(configuration["ConnectionStrings:PostgreSQL"]);
 
             return new ReviewsDbContext(optionsBuilder.Options);
         }

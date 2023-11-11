@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ReviewsData.Model;
 
-namespace ReviewsData.Model
+public class Game
 {
-    public class Game : BaseEntity
-    {
-
-    }
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public string Description { get; set; }
+    public decimal Rating { get; set; }
 }
