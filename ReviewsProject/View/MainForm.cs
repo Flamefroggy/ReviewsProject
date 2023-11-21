@@ -122,12 +122,14 @@ namespace ReviewsProject
         {
             switchButtons();
             m_GameView.Mode = GameViewMode.Create;
+            m_GameView.Game = new Game();
         }
 
         private void onEditClick()
         {
             switchButtons();
             m_GameView.Mode = GameViewMode.Edit;
+            m_GameView.Game = _gamesManager.Get(m_SelectedGame.Id);
         }
 
         private void onDeleteClick()
@@ -147,6 +149,9 @@ namespace ReviewsProject
             {
                 case GameViewMode.Create:
                     isSuccessful = handleAction(() => _gamesManager.Create(m_GameView.Game));
+                    //var game = m_GameView.Game;
+                    //GamesBS.DataSource = game;
+                    
                     break;
                 case GameViewMode.Edit:
                     isSuccessful = handleAction(() => _gamesManager.Update(m_GameView.Game));
@@ -162,6 +167,21 @@ namespace ReviewsProject
         private void onResetClick()
         {
             //reset data
+            switch (m_GameView.Mode)
+            {
+                case GameViewMode.Create:
+                    m_GameView.Game = new Game();
+                    break;
+                case GameViewMode.Edit:
+                    var game = _gamesManager.Get(m_GameView.Game.Id);
+                    if (game == null)
+                    {
+                        MessageBox.Show("Записи больше не существует!");
+                        m_GameView.Mode = GameViewMode.View;
+                    }
+                    m_GameView.Game = game;
+                    break;
+            }
         }
 
         private void onCancelClick()

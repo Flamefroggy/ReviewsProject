@@ -39,4 +39,16 @@ public class GamesManager : IGamesManager
     {
         throw new NotImplementedException();
     }
+    public Game Get(int id) 
+    {
+        using var db = _contextFactory.CreateDbContext();
+        try
+        {
+            return db.Games.FirstOrDefault(g => g.Id == id);
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Не удалось выполнить", ex);
+        }
+    }
 }
