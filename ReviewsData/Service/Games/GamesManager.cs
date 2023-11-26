@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ReviewsData.Model;
+using System.Xml.Linq;
 
 namespace ReviewsData.Service.Games;
 
@@ -17,6 +18,7 @@ public class GamesManager : IGamesManager
         using var db = _contextFactory.CreateDbContext();
         try
         {
+            //return db.Games.Cast<Game>().OrderBy(g => g.Name).ToList();
             return db.Games.Cast<Game>().ToList();
         }
         catch (Exception ex)
@@ -27,19 +29,49 @@ public class GamesManager : IGamesManager
 
     public Game Create(Game game)
     {
-        throw new NotImplementedException();
+        using var db = _contextFactory.CreateDbContext();
+        try
+        {
+            db.Games.Add(game);
+            db.SaveChanges();
+            return game;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Не удалось выполнить", ex);
+        }
     }
 
     public Game Update(Game game)
     {
-        throw new NotImplementedException();
+        using var db = _contextFactory.CreateDbContext();
+        try
+        {
+            db.Games.Update(game);
+            db.SaveChanges();
+            return game;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Не удалось выполнить", ex);
+        }
     }
 
     public void Delete(Game game)
     {
-        throw new NotImplementedException();
+        using var db = _contextFactory.CreateDbContext();
+        try
+        {
+            db.Games.Remove(game);
+            db.SaveChanges();
+            return ;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Не удалось выполнить", ex);
+        }
     }
-    public Game Get(int id) 
+    public Game GetById(int id) 
     {
         using var db = _contextFactory.CreateDbContext();
         try

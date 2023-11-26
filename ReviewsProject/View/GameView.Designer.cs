@@ -100,10 +100,6 @@
             tbDescription.Size = new Size(613, 280);
             tbDescription.TabIndex = 2;
             // 
-            // GameBS
-            // 
-            GameBS.DataSource = typeof(ReviewsData.Model.Game);
-            // 
             // tbName
             // 
             infoViewMain.SetColumnSpan(tbName, 2);

@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations.Builders;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using ReviewsData;
 using ReviewsData.Model;
 using ReviewsData.Service;
@@ -129,19 +131,20 @@ namespace ReviewsProject
         {
             switchButtons();
             m_GameView.Mode = GameViewMode.Edit;
-            m_GameView.Game = _gamesManager.Get(m_SelectedGame.Id);
+            m_GameView.Game = _gamesManager.GetById(m_SelectedGame.Id);
         }
 
         private void onDeleteClick()
         {
             handleAction(() => _gamesManager.Delete(m_GameView.Game));
+            refreshTable();
         }
 
         #endregion
 
         #region EditButtons handlers
 
-        private void onSaveClick()
+        private async void onSaveClick()
         {
             var isSuccessful = false;
             //save data + switch to view
@@ -149,9 +152,6 @@ namespace ReviewsProject
             {
                 case GameViewMode.Create:
                     isSuccessful = handleAction(() => _gamesManager.Create(m_GameView.Game));
-                    //var game = m_GameView.Game;
-                    //GamesBS.DataSource = game;
-                    
                     break;
                 case GameViewMode.Edit:
                     isSuccessful = handleAction(() => _gamesManager.Update(m_GameView.Game));
@@ -160,6 +160,7 @@ namespace ReviewsProject
             if (isSuccessful)
             {
                 m_GameView.Mode = GameViewMode.View;
+                refreshTable();
                 switchButtons();
             }
         }
@@ -173,7 +174,7 @@ namespace ReviewsProject
                     m_GameView.Game = new Game();
                     break;
                 case GameViewMode.Edit:
-                    var game = _gamesManager.Get(m_GameView.Game.Id);
+                    var game = _gamesManager.GetById(m_GameView.Game.Id);
                     if (game == null)
                     {
                         MessageBox.Show("Записи больше не существует!");
@@ -211,5 +212,6 @@ namespace ReviewsProject
                 return false;
             }
         }
+
     }
 }

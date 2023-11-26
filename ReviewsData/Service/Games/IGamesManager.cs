@@ -8,5 +8,5 @@ public interface IGamesManager
     Game Create(Game game);
     Game Update(Game game);
     void Delete(Game game);
-    Game Get(int id);
+    Game GetById(int id);
 }
