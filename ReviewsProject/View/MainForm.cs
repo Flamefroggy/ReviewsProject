@@ -10,6 +10,7 @@ using ReviewsProject.Utils;
 using ReviewsProject.View;
 using ReviewsProject.View.ButtonControls;
 using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace ReviewsProject
 {
@@ -162,6 +163,7 @@ namespace ReviewsProject
                 m_GameView.Mode = GameViewMode.View;
                 refreshTable();
                 switchButtons();
+                
             }
         }
 
