@@ -18,8 +18,8 @@ public class GamesManager : IGamesManager
         using var db = _contextFactory.CreateDbContext();
         try
         {
-            return db.Games.Cast<Game>().OrderBy(g => g.Name).ToList();
-            //return db.Games.Cast<Game>().ToList();
+            //return db.Games.Cast<Game>().OrderBy(g => g.Name).ToList();
+            return db.Games.Cast<Game>().ToList();
         }
         catch (Exception ex)
         {
